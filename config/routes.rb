@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "dashboard#index"
+  root "expenses#index"
 
   resources :expenses, only: [:index]
 

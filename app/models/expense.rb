@@ -16,5 +16,5 @@ class Expense < ApplicationRecord
   self.inheritance_column = nil
 
   enum type: [:purchase, :withdrawal, :transfer, :payment]
-  enum type: [:restaurants, :grocery, :car, :services, :home, :education, :fun, :travel, :imprevist]
+  enum category: [:restaurants, :grocery, :car, :services, :home, :education, :fun, :travel, :imprevist]
 end
