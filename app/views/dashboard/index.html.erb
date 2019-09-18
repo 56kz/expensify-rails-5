@@ -23,7 +23,9 @@
       <div class="panel panel-default">
         <div class="panel-heading">Últimos 6 Meses</div>
         <div class="panel-body">
-          <div id="expenses-chart" style="height: 250px;"></div>
+          <div id="expenses-chart" style="height: 250px;">
+            <%= column_chart @monthly_data, stacked: true, prefix: "$", thousands: ",", height: "250px"%>
+          </div>
         </div>
       </div>
     </div>
@@ -31,7 +33,9 @@
       <div class="panel panel-default">
         <div class="panel-heading">Por Día</div>
         <div class="panel-body">
-          <div id="daily-expenses-chart" style="height: 250px;"></div>
+          <div id="daily-expenses-chart" style="height: 250px;">
+            <%= column_chart @daily_data, stacked: true, prefix: "$", height: "250px", thousands: "," %>
+          </div>
         </div>
       </div>
     </div>
@@ -42,7 +46,9 @@
       <div class="panel panel-default">
         <div class="panel-heading">Por Categoría</div>
         <div class="panel-body">
-          <div id="category-chart" style="height: 250px;"></div>
+          <div id="category-chart" style="height: 250px;">
+            <%= pie_chart @categories_data, prefix: "$", thousands: ",", height: "250px" %>
+          </div>
         </div>
       </div>
     </div>
@@ -50,7 +56,9 @@
       <div class="panel panel-default">
         <div class="panel-heading">Acumulado</div>
         <div class="panel-body">
-          <div id="month-acc" style="height: 250px;"></div>
+          <div id="month-acc" style="height: 250px;">
+            <%= pie_chart @comparation_data, prefix: "$", thousands: ",", height: "250px" %>
+          </div>
         </div>
       </div>
     </div>
