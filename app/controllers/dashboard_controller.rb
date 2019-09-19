@@ -13,6 +13,5 @@ class DashboardController < ApplicationController
     end
 
     @categories_data = @actually_month.group(:type).sum(:amount)
-    @comparation_data = Expense.group(:type).sum(:amount)
   end
 end

@@ -7,7 +7,6 @@
         <a href="#" class="list-group-item">Withdrawal</a>
         <a href="#" class="list-group-item">Transfer</a>
         <a href="#" class="list-group-item">Payment</a>
-        <!-- more transaction types -->
       </div>
 
       <h4 class="filter-header">Category <span>Selecciona para filtrar</span></h4>
@@ -21,11 +20,8 @@
         <a href="#" class="list-group-item">Fun</a>
         <a href="#" class="list-group-item">Travel</a>
         <a href="#" class="list-group-item">Imprevist</a>
-
-
-
-        <!-- more categories  -->
       </div>
+      
     </div>
     <div class="col-md-9 index-data">
       <div class="row" style="margin-top: 10px;">
@@ -49,14 +45,28 @@
           <h4 class="dropdown pull-right">
             <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">April 2016 <span class="caret"></span></button>
             <ul class="dropdown-menu" role="menu">
-              <li role="presentation"><a href="#">April 2016</a></li>
-              <li role="presentation"><a href="#">March 2016</a></li>
+              <li role="presentation"><a href="#">Septiembre 2019</a></li>
+              <li role="presentation"><a href="#">Agosto 2019</a></li>
+              <li role="presentation"><a href="#">Julio 2019</a></li>
+              <li role="presentation"><a href="#">Junio 2019</a></li>
+              <li role="presentation"><a href="#">Mayo 2019</a></li>
+              <li role="presentation"><a href="#">Abril 2019</a></li>
+              <li role="presentation"><a href="#">Marzo 2019</a></li>
+              <li role="presentation"><a href="#">Febrero 2019</a></li>
+              <li role="presentation"><a href="#">Enero 2019</a></li>
+              <li role="presentation"><a href="#">Diciembre 2018</a></li>
+              <li role="presentation"><a href="#">Noviembre 2018</a></li>
+              <li role="presentation"><a href="#">Octubre 2018</a></li>
               <!-- more months -->
             </ul>
           </h4>
         </div>
       </div>
 
+
+
+
+      <input type="text" id="rangepicker">
       <table id="expenses-table" class="table table-hover" style="margin-top: 20px;">
         <thead>
           <tr>
@@ -67,29 +77,49 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="date">
-              <div class="day">24</div>
-              <div class="month">Apr</div>
-            </td>
-            <td>
-              <div>
-                <span class="type">Purchase</span>
-              </div>
-              <div>
-                <span class="concept">Example concept</span>
-              </div>
-            </td>
-            <td class="category text-right">Restauratns</td>
-            <td class="text-right" style="width: 170px;">
-              <div class="amount">$1,000,000</div>
-              <div class="actions">
-                <a href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                <a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-            </td>
-          </tr>
+
+          <% @expenses.each do |e| %>
+            <tr>
+              <td class="date">
+                <div class="day"><%= e.date.strftime("%d") %></div>
+                <div class="month"><%= e.date.strftime("%b") %></div>
+              </td>
+              <td>
+                <div>
+                  <span class="type"><%= e.type %></span>
+                </div>
+                <div>
+                  <span class="concept"><%= e.concept %></span>
+                </div>
+              </td>
+              <td class="category text-right"><%= e.category %></td>
+              <td class="text-right" style="width: 170px;">
+                <div class="amount"><%= e.amount %></div>
+                <div class="actions">
+                  <a href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                  <a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+              </td>
+            </tr>
+          <% end %>
+
         </tbody>
       </table>
     </div>
   </div>
 </div>
+
+<%= form_tag expenses_path, method: :get do %>
+  <%= hidden_field_tag :start %>
+  <%= hidden_field_tag :end %>
+<% end %>
+
+<script>
+  $("#rangepicker").daterangepicker({
+    startDate: moment("<%= l @start_date, format: '%Y-%m-%d' %>"),
+    endDate: moment("<%= l @end_date, format: '%Y-%m-%d' %>")
+  }, function(start, end, label){
+    $("#start").val(start.format('YYYY-MM-DD'));
+    $("#end").val(end.format('YYYY-MM-DD'));
+    $("form").submit();
+  });
+</script>

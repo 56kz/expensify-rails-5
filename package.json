@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "daterange": "^0.3.0",
+    "daterangepicker": "^3.0.5",
+    "jquery": "^3.4.1",
+    "moment": "^2.24.0"
+  }
+}
