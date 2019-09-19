@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="total-box col-md-3">
-      $200,000
+      <%= number_to_currency(today_amount, precision: 0) %>
       <span>HOY</span>
     </div>
     <div class="total-box col-md-3">
-      $140,000
+      <%= number_to_currency(yesterday_amount, precision: 0) %>
       <span>AYER</span>
     </div>
     <div class="total-box col-md-3">
-      $7,500,000
+      <%= number_to_currency(actually_month_amount, precision: 0) %>
       <span>ESTE MES</span>
     </div>
     <div class="total-box col-md-3">
-      $6,200,000
+      <%= number_to_currency(last_month_amount, precision: 0) %>
       <span>MES PASADO</span>
     </div>
   </div>
@@ -47,7 +47,7 @@
         <div class="panel-heading">Por Categoría</div>
         <div class="panel-body">
           <div id="category-chart" style="height: 250px;">
-            <%= pie_chart @categories_data, prefix: "$", thousands: ",", height: "250px" %>
+            <%= pie_chart @categories_data, prefix: "$", thousands: ",", height: "250px", donut: true %>
           </div>
         </div>
       </div>
@@ -57,7 +57,6 @@
         <div class="panel-heading">Acumulado</div>
         <div class="panel-body">
           <div id="month-acc" style="height: 250px;">
-            <%= pie_chart @comparation_data, prefix: "$", thousands: ",", height: "250px" %>
           </div>
         </div>
       </div>
