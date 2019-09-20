@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 #Endpoints Api
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :expenses
+      resources :expenses, only: [:index, :create, :update, :destroy]
     end
   end
 #Vistas
