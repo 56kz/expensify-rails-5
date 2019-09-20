@@ -12,6 +12,7 @@ class DashboardController < ApplicationController
       { name: type.capitalize, data: @actually_month.where(type: type).group_by_day(:date).sum(:amount) }
     end
 
-    @categories_data = @actually_month.group(:type).sum(:amount)
+    @types_data = @actually_month.group(:type).sum(:amount)
+    @categories_data = @actually_month.group(:category).sum(:amount)
   end
 end
