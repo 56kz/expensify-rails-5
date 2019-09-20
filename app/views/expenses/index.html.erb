@@ -21,7 +21,7 @@
         <a href="#" class="list-group-item">Travel</a>
         <a href="#" class="list-group-item">Imprevist</a>
       </div>
-      
+
     </div>
     <div class="col-md-9 index-data">
       <div class="row" style="margin-top: 10px;">
@@ -43,10 +43,9 @@
         <div class="col-md-12">
           <a href="#" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span> New Expense</a>
           <h4 class="dropdown pull-right">
-            <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">April 2016 <span class="caret"></span></button>
+            <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">Septiembre 2019 <span class="caret"></span></button>
             <ul class="dropdown-menu" role="menu">
-              <li role="presentation"><a href="#">Septiembre 2019</a></li>
-              <li role="presentation"><a href="#">Agosto 2019</a></li>
+              <li role="presentation"><a href="#" id="augustpicker">Agosto 2019</a></li>
               <li role="presentation"><a href="#">Julio 2019</a></li>
               <li role="presentation"><a href="#">Junio 2019</a></li>
               <li role="presentation"><a href="#">Mayo 2019</a></li>
@@ -57,7 +56,6 @@
               <li role="presentation"><a href="#">Diciembre 2018</a></li>
               <li role="presentation"><a href="#">Noviembre 2018</a></li>
               <li role="presentation"><a href="#">Octubre 2018</a></li>
-              <!-- more months -->
             </ul>
           </h4>
         </div>
@@ -116,10 +114,18 @@
 <script>
   $("#rangepicker").daterangepicker({
     startDate: moment("<%= l @start_date, format: '%Y-%m-%d' %>"),
-    endDate: moment("<%= l @end_date, format: '%Y-%m-%d' %>")
+    endDate: moment("<%= l @end_date, format: '%Y-%m-%d' %>"),
   }, function(start, end, label){
     $("#start").val(start.format('YYYY-MM-DD'));
     $("#end").val(end.format('YYYY-MM-DD'));
     $("form").submit();
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+    console.log(start)
   });
+
+  $("#augustpicker").on("click", function(){
+    $("#start").val('2019-08-01');
+    $("#end").val('2019-08-31');
+    $("form").submit();
+  })
 </script>
