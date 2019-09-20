@@ -17,6 +17,6 @@ class ExpensesController < ApplicationController
 
     @num_transactions = Expense.where(date: range).count
     @total_amount = Expense.where(date: range).sum(:amount)
-    @average = (@total_amount / @num_transactions).round(2)
+    @average = (@total_amount / @num_transactions).round
   end
 end
