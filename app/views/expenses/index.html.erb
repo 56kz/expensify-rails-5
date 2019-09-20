@@ -43,26 +43,24 @@
         <div class="col-md-12">
           <a href="#" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span> New Expense</a>
           <h4 class="dropdown pull-right">
-            <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">Septiembre 2019 <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
-              <li class="active" role="presentation"><a href="#" id="augustpicker">Agosto 2019</a></li>
-              <li role="presentation"><a href="#">Julio 2019</a></li>
-              <li role="presentation"><a href="#">Junio 2019</a></li>
-              <li role="presentation"><a href="#">Mayo 2019</a></li>
-              <li role="presentation"><a href="#">Abril 2019</a></li>
-              <li role="presentation"><a href="#">Marzo 2019</a></li>
-              <li role="presentation"><a href="#">Febrero 2019</a></li>
-              <li role="presentation"><a href="#">Enero 2019</a></li>
-              <li role="presentation"><a href="#">Diciembre 2018</a></li>
-              <li role="presentation"><a href="#">Noviembre 2018</a></li>
-              <li role="presentation"><a href="#">Octubre 2018</a></li>
+            <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">Filtra por mes <span class="caret"></span></button>
+            <ul class="dropdown-menu months">
+              <li id="seppicker"><a href="#">Septiembre 2019</a></li>
+              <li id="augustpicker"><a href="#">Agosto 2019</a></li>
+              <li id="julpicker" ><a href="#">Julio 2019</a></li>
+              <li id="junpicker" ><a href="#">Junio 2019</a></li>
+              <li id="maypicker"><a href="#">Mayo 2019</a></li>
+              <li id="appicker"><a href="#">Abril 2019</a></li>
+              <li id="marpicker"><a href="#">Marzo 2019</a></li>
+              <li id="febpicker"><a href="#">Febrero 2019</a></li>
+              <li id="janpicker"><a href="#">Enero 2019</a></li>
+              <li id="dicpicker"><a href="#">Diciembre 2018</a></li>
+              <li id="novpicker"><a href="#">Noviembre 2018</a></li>
+              <li id="ocpicker"><a href="#">Octubre 2018</a></li>
             </ul>
           </h4>
         </div>
       </div>
-
-
-
 
       <input type="text" id="rangepicker">
       <table id="expenses-table" class="table table-hover" style="margin-top: 20px;">
@@ -123,9 +121,76 @@
     console.log(start)
   });
 
+  $("#seppicker").on("click", function(){
+    $("#start").val('2019-09-01');
+    $("#end").val('2019-09-30');
+    $("form").submit();
+  })
+
   $("#augustpicker").on("click", function(){
     $("#start").val('2019-08-01');
     $("#end").val('2019-08-31');
+    $("form").submit();
+  })
+
+  $("#julpicker").on("click", function(){
+    $("#start").val('2019-07-01');
+    $("#end").val('2019-07-30');
+    $("form").submit();
+  })
+
+  $("#junpicker").on("click", function(){
+    $("#start").val('2019-06-01');
+    $("#end").val('2019-06-30');
+    $("form").submit();
+  })
+
+
+  $("#maypicker").on("click", function(){
+    $("#start").val('2019-05-01');
+    $("#end").val('2019-05-30');
+    $("form").submit();
+  })
+
+  $("#appicker").on("click", function(){
+    $("#start").val('2019-04-01');
+    $("#end").val('2019-04-30');
+    $("form").submit();
+  })
+
+  $("#marpicker").on("click", function(){
+    $("#start").val('2019-03-01');
+    $("#end").val('2019-03-30');
+    $("form").submit();
+  })
+
+  $("#febpicker").on("click", function(){
+    $("#start").val('2019-02-01');
+    $("#end").val('2019-02-28');
+    $("form").submit();
+  })
+
+  $("#janpicker").on("click", function(){
+    $("#start").val('2019-01-01');
+    $("#end").val('2019-01-30');
+    $("form").submit();
+  })
+
+  $("#dicpicker").on("click", function(){
+    $("#start").val('2018-12-01');
+    $("#end").val('2018-12-30');
+    $("form").submit();
+  })
+
+  $("#novpicker").on("click", function(){
+    $("#start").val('2018-11-01');
+    $("#end").val('2018-11-30');
+    $("form").submit();
+  })
+
+  $("#ocpicker").on("click", function(){
+    $("#start").val('2018-10-01');
+    $("#end").val('2018-10-30');
     $("form").submit();
   })
 </script>
