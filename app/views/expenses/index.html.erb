@@ -3,7 +3,7 @@
     <div class="col-md-3">
       <h4 class="filter-header">Transaction Type <span>Choose to filter</span></h4>
       <div class="list-group filter-type">
-        <a href="#" class="list-group-item">Purchase</a>
+        <a href="#" class="list-group-item" id= "purchasetype">Purchase</a>
         <a href="#" class="list-group-item">Withdrawal</a>
         <a href="#" class="list-group-item">Transfer</a>
         <a href="#" class="list-group-item">Payment</a>
@@ -26,15 +26,15 @@
     <div class="col-md-9 index-data">
       <div class="row" style="margin-top: 10px;">
         <div class="summary-box col-md-4 text-center">
-          <div class="summary-value">$2,500,000</div>
+          <div class="summary-value"><%= @total_amount %></div>
           <div class="summary-label">Total</div>
         </diV>
         <div class="summary-box col-md-4 text-center">
-          <div class="summary-value">2</div>
+          <div class="summary-value"><%= @num_transactions %></div>
           <div class="summary-label">Transactions</div>
         </div>
         <div class="summary-box col-md-4 text-center">
-          <div class="summary-value">$1,000,000</div>
+          <div class="summary-value"><%= @average %></div>
           <div class="summary-label">Average</div>
         </div>
       </div>
@@ -107,9 +107,15 @@
 <%= form_tag expenses_path, method: :get do %>
   <%= hidden_field_tag :start %>
   <%= hidden_field_tag :end %>
+  <%= hidden_field_tag :type %>
 <% end %>
 
 <script>
+  $('#purchasetype').on("click", function(){
+    $("#type").val("purchase");
+    $("form").submit();
+  })
+
   $("#rangepicker").daterangepicker({
     startDate: moment("<%= l @start_date, format: '%Y-%m-%d' %>"),
     endDate: moment("<%= l @end_date, format: '%Y-%m-%d' %>"),
@@ -117,8 +123,6 @@
     $("#start").val(start.format('YYYY-MM-DD'));
     $("#end").val(end.format('YYYY-MM-DD'));
     $("form").submit();
-    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-    console.log(start)
   });
 
   $("#seppicker").on("click", function(){
