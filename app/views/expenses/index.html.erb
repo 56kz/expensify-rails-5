@@ -98,7 +98,7 @@
                 <div class="amount"><%= e.amount %></div>
                 <div class="actions">
                   <a href="#"><span class="glyphicon glyphicon-edit"></span> <%= link_to "Editar Gasto", edit_expense_path(e) %></a>
-                  <a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                  <a href="#"><span class="glyphicon glyphicon-trash"></span> <%= link_to "Eliminar", e, method: :delete, data: { confirm: "Estas seguro de eliminar este gasto?"} %></a>
               </td>
             </tr>
           <% end %>

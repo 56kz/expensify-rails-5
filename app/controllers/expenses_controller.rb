@@ -38,12 +38,18 @@ class ExpensesController < ApplicationController
   end
 
   def update
-    @expense = Expense.find(params[:id])
-    if @expense.update(expense_params)
+    expense = Expense.find(params[:id])
+    if expense.update(expense_params)
       redirect_to expenses_path, notice: "Tú gasto fue actualizado con éxito"
     else
       render :edit
     end
+  end
+
+  def destroy
+    expense = Expense.find(params[:id])
+    expense.destroy
+    redirect_to expenses_path, notice: "El gasto fue eliminado con éxito"
   end
 
   private
