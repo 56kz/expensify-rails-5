@@ -41,7 +41,12 @@
 
       <div class="row" style="margin-top: 20px;">
         <div class="col-md-12">
-          <a class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span> New Expense</a>
+          <div class="btn btn success pull-left">
+            <span class="glyphicon glyphicon-plus"></span>
+            <%= link_to "Crear Gasto", new_expense_path %>
+          </div>
+
+
           <h4 class="dropdown pull-right">
             <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">Filtra por mes <span class="caret"></span></button>
             <ul class="dropdown-menu months">
@@ -92,7 +97,7 @@
               <td class="text-right" style="width: 170px;">
                 <div class="amount"><%= e.amount %></div>
                 <div class="actions">
-                  <a href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                  <a href="#"><span class="glyphicon glyphicon-edit"></span> <%= link_to "Editar Gasto", edit_expense_path(e) %></a>
                   <a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a>
               </td>
             </tr>
