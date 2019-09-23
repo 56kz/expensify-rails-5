@@ -1,5 +1,6 @@
 class ExpensesController < ApplicationController
   def index
+    @expense = Expense.new
     puts "Start: #{params[:start]}"
     puts "End: #{params[:end]}"
     puts "Type: #{params[:type]}"
@@ -21,7 +22,6 @@ class ExpensesController < ApplicationController
   end
 
   def new
-    @expense = Expense.new
   end
 
   def create

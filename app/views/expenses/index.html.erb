@@ -41,9 +41,9 @@
 
       <div class="row" style="margin-top: 20px;">
         <div class="col-md-12">
-          <div class="btn btn success pull-left">
+          <div class="btn btn success pull-left" id="modal_button">
             <span class="glyphicon glyphicon-plus"></span>
-            <%= link_to "Crear Gasto", new_expense_path %>
+            Crear Gasto
           </div>
 
 
@@ -97,17 +97,72 @@
               <td class="text-right" style="width: 170px;">
                 <div class="amount"><%= e.amount %></div>
                 <div class="actions">
-                  <a href="#"><span class="glyphicon glyphicon-edit"></span> <%= link_to "Editar Gasto", edit_expense_path(e) %></a>
+                  <a href="#"><span class="glyphicon glyphicon-edit"></span> Editar</a>
                   <a href="#"><span class="glyphicon glyphicon-trash"></span> <%= link_to "Eliminar", e, method: :delete, data: { confirm: "Estas seguro de eliminar este gasto?"} %></a>
+                </div>
               </td>
             </tr>
           <% end %>
 
         </tbody>
       </table>
-    </div>
-  </div>
-</div>
+
+
+
+
+
+
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="my_modal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <%= form_for @expense do |f| %>
+              <div class="modal-header">
+                <h4 class="modal-title">Expenses</h4>
+              </div>
+
+              <div class="modal-body">
+                <h4><%= form_title %></h4>
+                  <div class="form-group col-md-6">
+                    <%= select_tag :type, options_for_select(Expense.types), class: "form-control"%>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <%= f.date_field :date, class: "form-control", placeholder: "Fecha"%>
+                  </div>
+                  <div class="form-group col-sm-12">
+                    <%= f.text_field :concept, class: "form-control", placeholder: "Concepto"%>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <%= select_tag :category, options_for_select(Expense.categories), class: "form-control"%>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <%= f.number_field :amount, class: "form-control", placeholder: "Cantidad" %>
+                  </div>
+                  <div>
+                    <%= f.submit form_title, class: "btn btn-primary btn-lg btn-block"  %>
+                  </div>
+
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+
+
+              <% end %>
+            <!-- cierral el modal content -->
+            </div>
+
+          </div>
+        </div>
+
+
+
 
 <%= form_tag expenses_path, method: :get do %>
   <%= hidden_field_tag :start %>
@@ -116,6 +171,11 @@
 <% end %>
 
 <script>
+  $('#modal_button').on("click", function(e){
+    e.preventDefault()
+    $('#my_modal').modal('show')
+  })
+
   $('#purchasetype').on("click", function(){
     $("#type").val("purchase");
     $("form").submit();
