@@ -19,4 +19,33 @@ class ExpensesController < ApplicationController
     @total_amount = Expense.where(date: range).sum(:amount)
     @average = (@total_amount / @num_transactions).round
   end
+
+  def new
+    @expense = Expense.new
+  end
+
+  def create
+    @expense = Expense.new(expense_params)
+    if @expense.save
+      redirect_to expenses_path, notice: "Tu gasto fue creado con éxito"
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @expense =  Expense.find(params[:id])
+  end
+
+  def update
+    @expense = Expense.find(params[:id])
+    if @expense.update
+      redirect_to expenses_path, notice: "Tú gasto fue actualizado con éxito"
+    end
+  end
+
+  private
+    def expense_params
+      params.require(:expense).permit(:date, :concept, :type, :category, :amount)
+    end
 end
