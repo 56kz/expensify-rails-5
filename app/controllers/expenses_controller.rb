@@ -22,15 +22,16 @@ class ExpensesController < ApplicationController
   end
 
   def new
+    @expense = Expense.new
   end
 
   def create
-    @expense = Expense.new(expense_params)
-    if @expense.save
-      redirect_to expenses_path, notice: "Tu gasto fue creado con éxito"
-    else
-      render :new
-    end
+    @expense = Expense.create(expense_params)
+    # if @expense.save
+    #   redirect_to expenses_path, notice: "Tu gasto fue creado con éxito"
+    # else
+    #   render :new
+    # end
   end
 
   def edit
