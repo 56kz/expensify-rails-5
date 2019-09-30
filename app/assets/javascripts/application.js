@@ -13,6 +13,8 @@
 //= require chartkick
 //= require Chart.bundle
 //= require jquery
+//= require moment
+//= require daterangepicker
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
