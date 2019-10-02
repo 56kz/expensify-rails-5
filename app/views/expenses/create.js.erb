@@ -1,5 +1,6 @@
 <% if @expense.errors.empty? %>
   $('#expense_modal').modal('hide');
+  $('#expenses-table').prepend('<%= j render "row", expense: @expense %>')
 <% else %>
   $('#expense_modal').modal('hide');
   alert('<%= @expense.errors.full_messages[0] %>');

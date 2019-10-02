@@ -1,6 +1,7 @@
 class ExpensesController < ApplicationController
   def index
     @expense = Expense.new
+    puts "call index controller"
     puts "Start: #{params[:start]}"
     puts "End: #{params[:end]}"
     puts "Type: #{params[:type]}"

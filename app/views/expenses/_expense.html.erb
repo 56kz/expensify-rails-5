@@ -1,0 +1,22 @@
+  <tr>
+    <td class="date">
+      <div class="day"><%= expense.date.strftime("%d") %></div>
+      <div class="month"><%= expense.date.strftime("%b") %></div>
+    </td>
+    <td>
+      <div>
+        <span class="type"><%= expense.type %></span>
+      </div>
+      <div>
+        <span class="concept"><%= expense.concept %></span>
+      </div>
+    </td>
+    <td class="category text-right"><%= expense.category %></td>
+    <td class="text-right" style="width: 170px;">
+      <div class="amount"><%= expense.amount %></div>
+      <div class="actions">
+        <a href="#"><span class="glyphicon glyphicon-edit"></span>  <%= link_to "Editar", edit_expense_path(expense.id), remote: true %> </a>
+        <a href="#"><span class="glyphicon glyphicon-trash"></span> <%= link_to "Eliminar", expense, method: :delete, data: { confirm: "Estas seguro de eliminar este gasto?"} %></a>
+      </div>
+    </td>
+  </tr>

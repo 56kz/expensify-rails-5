@@ -3,7 +3,9 @@
     <div class="col-md-3">
       <h4 class="filter-header">Transaction Type <span>Choose to filter</span></h4>
       <div class="list-group filter-type" id="filter_types">
-        <a href="#" class="list-group-item active" id="purchase_type">Purchase</a>
+        <a class="list-group-item" id="purchase_type">
+          <%= link_to "Purchase", expenses_path(:start => @start_date, :end => @end_date, :type => "purchase") %>
+        </a>
         <a href="#" class="list-group-item" id="withdrawal_type">Withdrawal</a>
         <a href="#" class="list-group-item" id="transfer_type">Transfer</a>
         <a href="#" class="list-group-item" id="payment_type">Payment</a>
@@ -49,7 +51,9 @@
           <h4 class="dropdown pull-right">
             <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">Filtra por mes <span class="caret"></span></button>
             <ul class="dropdown-menu months">
-              <li id="ocpicker"><a href="#">Octubre 2019</a></li>
+              <li id="ocpicker"><a>
+                <%= link_to "Octubre 2019", expenses_path(:start => "2019-10-01", :end => "2019-10-31", :type => @types) %>
+              </a></li>
               <li id="seppicker"><a href="#">Septiembre 2019</a></li>
               <li id="augustpicker"><a href="#">Agosto 2019</a></li>
               <li id="julpicker" ><a href="#">Julio 2019</a></li>
@@ -76,43 +80,14 @@
           </tr>
         </thead>
         <tbody>
-
-          <% @expenses.each do |e| %>
-            <tr>
-              <td class="date">
-                <div class="day"><%= e.date.strftime("%d") %></div>
-                <div class="month"><%= e.date.strftime("%b") %></div>
-              </td>
-              <td>
-                <div>
-                  <span class="type"><%= e.type %></span>
-                </div>
-                <div>
-                  <span class="concept"><%= e.concept %></span>
-                </div>
-              </td>
-              <td class="category text-right"><%= e.category %></td>
-              <td class="text-right" style="width: 170px;">
-                <div class="amount"><%= e.amount %></div>
-                <div class="actions">
-                  <a href="#"><span class="glyphicon glyphicon-edit"></span>  <%= link_to "Editar", edit_expense_path(e.id), remote: true %> </a>
-                  <a href="#"><span class="glyphicon glyphicon-trash"></span> <%= link_to "Eliminar", e, method: :delete, data: { confirm: "Estas seguro de eliminar este gasto?"} %></a>
-                </div>
-              </td>
-            </tr>
-          <% end %>
-
+          <%= render @expenses %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
 
-<%= form_tag expenses_path, method: :get do %>
-  <%= hidden_field_tag :start %>
-  <%= hidden_field_tag :end %>
-  <%= hidden_field_tag :type %>
-<% end %>
+
 
 <script>
 
@@ -146,12 +121,7 @@
 
 
 
-  $("#ocpicker").on("click", function(){
-    $("#start").val('2019-10-01');
-    $("#end").val('2019-10-30');
-    $('#type').val('<%= @types%>');
-    $("form").submit();
-  });
+
 
   $("#seppicker").on("click", function(){
     $("#start").val('2019-09-01');
