@@ -16,9 +16,15 @@ class ExpensesController < ApplicationController
       @expenses = date_array.where(type: @types)
     end
 
-    @num_transactions = Expense.where(date: range).count
+
     @total_amount = Expense.where(date: range).sum(:amount)
-    @average = (@total_amount / @num_transactions).round
+    @num_transactions = Expense.where(date: range).count
+    if @num_transactions == 0
+      @average = 0
+    else
+      @average = (@total_amount / @num_transactions).round
+    end
+
   end
 
   def new
@@ -27,11 +33,6 @@ class ExpensesController < ApplicationController
 
   def create
     @expense = Expense.create(expense_params)
-    # if @expense.save
-    #   redirect_to expenses_path, notice: "Tu gasto fue creado con éxito"
-    # else
-    #   render :new
-    # end
   end
 
   def edit

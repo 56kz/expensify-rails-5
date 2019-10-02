@@ -9,7 +9,7 @@
         <div class="modal-body">
           <h4><%= form_title %></h4>
           <div class="form-group col-md-6">
-            <%= f.select(:type, options_for_select(Expense.types.keys))%>
+            <%= f.select :type, Expense.types.keys %>
           </div>
           <div class="form-group col-md-6">
             <%= f.date_field :date, class: "form-control", placeholder: "Fecha"%>
@@ -18,22 +18,20 @@
             <%= f.text_field :concept, class: "form-control", placeholder: "Concepto"%>
           </div>
           <div class="form-group col-md-6">
-            <%= f.select(:category, options_for_select(Expense.categories.keys), class: "form-control")%>
+            <%= f.select :category, Expense.categories.keys  %>
           </div>
           <div class="form-group col-md-6">
             <%= f.number_field :amount, class: "form-control", placeholder: "Cantidad" %>
           </div>
-          <!-- <div>
-            <%= f.submit form_title, class: "btn btn-primary btn-lg btn-block"  %>
-          </div> -->
+          <div class="text-right">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+          <div class="text-right">
+            <%= f.submit form_title, class: "btn btn-primary"  %>
+          </div>
         </div>
 
-        <div class="modal-footer">
 
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary"><%= f.submit form_title %></button>
-
-        </div>
       <% end %>
     <!-- cierral el modal content -->
     </div>

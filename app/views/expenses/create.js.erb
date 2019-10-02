@@ -1,5 +1,6 @@
 <% if @expense.errors.empty? %>
   $('#expense_modal').modal('hide');
 <% else %>
+  $('#expense_modal').modal('hide');
   alert('<%= @expense.errors.full_messages[0] %>');
 <% end %>
