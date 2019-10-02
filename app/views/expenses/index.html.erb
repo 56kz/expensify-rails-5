@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col-md-3">
       <h4 class="filter-header">Transaction Type <span>Choose to filter</span></h4>
-      <div class="list-group filter-type">
-        <a href="#" class="list-group-item" id= "purchasetype">Purchase</a>
-        <a href="#" class="list-group-item">Withdrawal</a>
-        <a href="#" class="list-group-item">Transfer</a>
-        <a href="#" class="list-group-item">Payment</a>
+      <div class="list-group filter-type" id="filter_types">
+        <a href="#" class="list-group-item active" id="purchase_type">Purchase</a>
+        <a href="#" class="list-group-item" id="withdrawal_type">Withdrawal</a>
+        <a href="#" class="list-group-item" id="transfer_type">Transfer</a>
+        <a href="#" class="list-group-item" id="payment_type">Payment</a>
       </div>
 
       <h4 class="filter-header">Category <span>Selecciona para filtrar</span></h4>
@@ -116,9 +116,40 @@
 
 <script>
 
+  $('#purchase_type').on("click", function(){
+    $("#start").val('<%= @start_date %>');
+    $("#end").val('<%= @end_date %>');
+    $('#type').val("purchase");
+    $("form").submit();
+  });
+
+  $('#withdrawal_type').on("click", function(e){
+    $("#start").val('<%= @start_date %>');
+    $("#end").val('<%= @end_date %>');
+    $('#type').val("withdrawal");
+    $("form").submit();
+  });
+
+  $('#payment_type').on("click", function(e){
+    $("#start").val('<%= @start_date %>');
+    $("#end").val('<%= @end_date %>');
+    $('#type').val("payment");
+    $("form").submit();
+  });
+
+  $('#transfer_type').on("click", function(e){
+    $("#start").val('<%= @start_date %>');
+    $("#end").val('<%= @end_date %>');
+    $('#type').val("transfer");
+    $("form").submit();
+  });
+
+
+
   $("#ocpicker").on("click", function(){
     $("#start").val('2019-10-01');
     $("#end").val('2019-10-30');
+    $('#type').val('<%= @types%>');
     $("form").submit();
   });
 
@@ -145,7 +176,6 @@
     $("#end").val('2019-06-30');
     $("form").submit();
   })
-
 
   $("#maypicker").on("click", function(){
     $("#start").val('2019-05-01');
@@ -188,5 +218,5 @@
     $("#end").val('2018-11-30');
     $("form").submit();
   })
-  
+
 </script>
