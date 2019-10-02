@@ -2,13 +2,11 @@
   <div class="row">
     <div class="col-md-3">
       <h4 class="filter-header">Transaction Type <span>Choose to filter</span></h4>
-      <div class="list-group filter-type" id="filter_types">
-        <a class="list-group-item" id="purchase_type">
-          <%= link_to "Purchase", expenses_path(:start => @start_date, :end => @end_date, :type => "purchase") %>
-        </a>
-        <a href="#" class="list-group-item" id="withdrawal_type">Withdrawal</a>
-        <a href="#" class="list-group-item" id="transfer_type">Transfer</a>
-        <a href="#" class="list-group-item" id="payment_type">Payment</a>
+      <div class="list-group filter-type filter_types">
+        <%= link_to 'Purchase', expenses_path(:start => @start_date, :end => @end_date, :type => "purchase"), class:"list-group-item purchase_type active" %>
+        <%= link_to 'withdrawal', expenses_path(:start => @start_date, :end => @end_date, :type => "withdrawal"), class:"list-group-item withdrawal_type" %>
+        <%= link_to 'transfer', expenses_path(:start => @start_date, :end => @end_date, :type => "transfer"), class:"list-group-item transfer_type" %>
+        <%= link_to 'payment', expenses_path(:start => @start_date, :end => @end_date, :type => "payment"), class:"list-group-item payment_type" %>      
       </div>
 
       <h4 class="filter-header">Category <span>Selecciona para filtrar</span></h4>
