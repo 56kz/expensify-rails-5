@@ -1,13 +1,34 @@
 class ExpensesController < ApplicationController
+
   def index
     @expense = Expense.new
-    puts "call index controller"
     puts "Start: #{params[:start]}"
     puts "End: #{params[:end]}"
     puts "Type: #{params[:type]}"
-    @start_date = params[:start].try(:to_date)  || 30.days.ago.to_date
+    puts "Handling #{params[:click_handling]}"
+
+    @start_date = params[:start].try(:to_date) || 30.days.ago.to_date
     @end_date = params[:end].try(:to_date) || Date.current
     @types = params[:type]
+    @click_handling = params[:click_handling]
+
+    # if @click_handling
+    #   # si existe e parametro
+    #   if Typehandler.last == nil
+    #     element = Typehandler.create(name: @click_handling)
+    #     puts "esta vacio el tales , ingreso el primer elemento"
+    #   else
+    #
+    #     if Typehandler.last.name == @click_handling
+    #       puts "aqui desactiva la clase active y los filtros"
+    #       Typehandler.last.delete
+    #     end
+    #     element = Typehandler.create(name: @click_handling)
+    #     puts " ingreso el segundo elemento"
+    #   end
+    #
+    # end
+
     range = (@start_date..@end_date)
 
     if params[:type].nil? || params[:type].empty?
@@ -17,7 +38,6 @@ class ExpensesController < ApplicationController
       @expenses = date_array.where(type: @types)
     end
 
-
     @total_amount = Expense.where(date: range).sum(:amount)
     @num_transactions = Expense.where(date: range).count
     if @num_transactions == 0
@@ -25,8 +45,8 @@ class ExpensesController < ApplicationController
     else
       @average = (@total_amount / @num_transactions).round
     end
-
   end
+
 
   def new
     @expense = Expense.new

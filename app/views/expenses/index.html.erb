@@ -3,12 +3,43 @@
     <div class="col-md-3">
       <h4 class="filter-header">Transaction Type <span>Choose to filter</span></h4>
       <div class="list-group filter-type" id="filter_types">
-        <div class="tipos_filtros">
-          <%= link_to 'Purchase', expenses_path(:start => @start_date, :end => @end_date, :type => "purchase"), class:"filter_types list-group-item purchase_type" %>
+
+
+
+        <div class="purchase_filter">
+          <% if @click_handling != "true_pur" %>
+            <%= link_to 'Purchase', expenses_path(:start => @start_date, :end => @end_date, :type => "purchase", :click_handling => "true_pur"), class:"filter_types list-group-item purchase_type" %>
+          <% else %>
+            <%= link_to 'Purchase', expenses_path(:start => @start_date, :end => @end_date, :type => "purchase", :click_handling => "true_pur"), class:"filter_types list-group-item purchase_type active" %>
+          <% end %>
         </div>
-        <%= link_to 'withdrawal', expenses_path(:start => @start_date, :end => @end_date, :type => "withdrawal"), class:"filter_types list-group-item withdrawal_type active" %>
-        <%= link_to 'transfer', expenses_path(:start => @start_date, :end => @end_date, :type => "transfer"), class:"filter_types list-group-item transfer_type" %>
-        <%= link_to 'payment', expenses_path(:start => @start_date, :end => @end_date, :type => "payment"), class:"filter_types list-group-item payment_type" %>
+
+
+        <div class="withdrawal_filter">
+          <% if @click_handling != "true_with" %>
+            <%= link_to 'withdrawal', expenses_path(:start => @start_date, :end => @end_date, :type => "withdrawal", :click_handling => "true_with"), class:"filter_types list-group-item withdrawal_type" %>
+          <% else %>
+            <%= link_to 'withdrawal', expenses_path(:start => @start_date, :end => @end_date, :type => "withdrawal", :click_handling => "true_with"), class:"filter_types list-group-item withdrawal_type active" %>
+          <% end %>
+        </div>
+
+        <div class="transfer_filter">
+          <% if @click_handling != "true_trans" %>
+            <%= link_to 'transfer', expenses_path(:start => @start_date, :end => @end_date, :type => "transfer", :click_handling => "true_trans"), class:"filter_types list-group-item transfer_type" %>
+          <% else %>
+            <%= link_to 'transfer', expenses_path(:start => @start_date, :end => @end_date, :type => "transfer", :click_handling => "true_trans"), class:"filter_types list-group-item transfer_type active" %>
+          <% end %>
+        </div>
+
+        <div class="payment_filter">
+          <% if @click_handling != "true_pay" %>
+            <%= link_to 'payment', expenses_path(:start => @start_date, :end => @end_date, :type => "payment", :click_handling => "true_pay"), class:"filter_types list-group-item payment_type" %>
+          <% else %>
+            <%= link_to 'payment', expenses_path(:start => @start_date, :end => @end_date, :type => "payment", :click_handling => "true_pay"), class:"filter_types list-group-item payment_type active" %>
+          <% end %>
+        </div>
+
+
       </div>
 
       <h4 class="filter-header">Category <span>Selecciona para filtrar</span></h4>
@@ -51,20 +82,42 @@
           <h4 class="dropdown pull-right">
             <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">Filtra por mes <span class="caret"></span></button>
             <ul class="dropdown-menu months">
-              <li id="ocpicker"><a>
+              <li id="ocpicker">
                 <%= link_to "Octubre 2019", expenses_path(:start => "2019-10-01", :end => "2019-10-31", :type => @types) %>
-              </a></li>
-              <li id="seppicker"><a href="#">Septiembre 2019</a></li>
-              <li id="augustpicker"><a href="#">Agosto 2019</a></li>
-              <li id="julpicker" ><a href="#">Julio 2019</a></li>
-              <li id="junpicker" ><a href="#">Junio 2019</a></li>
-              <li id="maypicker"><a href="#">Mayo 2019</a></li>
-              <li id="appicker"><a href="#">Abril 2019</a></li>
-              <li id="marpicker"><a href="#">Marzo 2019</a></li>
-              <li id="febpicker"><a href="#">Febrero 2019</a></li>
-              <li id="janpicker"><a href="#">Enero 2019</a></li>
-              <li id="dicpicker"><a href="#">Diciembre 2018</a></li>
-              <li id="novpicker"><a href="#">Noviembre 2018</a></li>
+              </li>
+              <li id="seppicker">
+                <%= link_to "Septiembre 2019", expenses_path(:start => "2019-09-01", :end => "2019-09-30", :type => @types) %>
+              </li>
+              <li id="augustpicker">
+                <a href="#">Agosto 2019</a>
+              </li>
+              <li id="julpicker" >
+                <a href="#">Julio 2019</a>
+              </li>
+              <li id="junpicker" >
+                <a href="#">Junio 2019</a>
+              </li>
+              <li id="maypicker">
+                <a href="#">Mayo 2019</a>
+              </li>
+              <li id="appicker">
+                <a href="#">Abril 2019</a>
+              </li>
+              <li id="marpicker">
+                <a href="#">Marzo 2019</a>
+              </li>
+              <li id="febpicker">
+                <a href="#">Febrero 2019</a>
+              </li>
+              <li id="janpicker">
+                <a href="#">Enero 2019</a>
+              </li>
+              <li id="dicpicker">
+                <a href="#">Diciembre 2018</a>
+              </li>
+              <li id="novpicker">
+                <a href="#">Noviembre 2018</a>
+              </li>
             </ul>
           </h4>
         </div>
@@ -95,43 +148,43 @@
   //   $(this).addClass("active");
   // })
 
-  $('#purchase_type').on("click", function(){
-    $("#start").val('<%= @start_date %>');
-    $("#end").val('<%= @end_date %>');
-    $('#type').val("purchase");
-    $("form").submit();
-  });
-
-  $('#withdrawal_type').on("click", function(e){
-    $("#start").val('<%= @start_date %>');
-    $("#end").val('<%= @end_date %>');
-    $('#type').val("withdrawal");
-    $("form").submit();
-  });
-
-  $('#payment_type').on("click", function(e){
-    $("#start").val('<%= @start_date %>');
-    $("#end").val('<%= @end_date %>');
-    $('#type').val("payment");
-    $("form").submit();
-  });
-
-  $('#transfer_type').on("click", function(e){
-    $("#start").val('<%= @start_date %>');
-    $("#end").val('<%= @end_date %>');
-    $('#type').val("transfer");
-    $("form").submit();
-  });
-
-
+  // $('#purchase_type').on("click", function(){
+  //   $("#start").val('<%= @start_date %>');
+  //   $("#end").val('<%= @end_date %>');
+  //   $('#type').val("purchase");
+  //   $("form").submit();
+  // });
+  //
+  // $('#withdrawal_type').on("click", function(e){
+  //   $("#start").val('<%= @start_date %>');
+  //   $("#end").val('<%= @end_date %>');
+  //   $('#type').val("withdrawal");
+  //   $("form").submit();
+  // });
+  //
+  // $('#payment_type').on("click", function(e){
+  //   $("#start").val('<%= @start_date %>');
+  //   $("#end").val('<%= @end_date %>');
+  //   $('#type').val("payment");
+  //   $("form").submit();
+  // });
+  //
+  // $('#transfer_type').on("click", function(e){
+  //   $("#start").val('<%= @start_date %>');
+  //   $("#end").val('<%= @end_date %>');
+  //   $('#type').val("transfer");
+  //   $("form").submit();
+  // });
 
 
 
-  $("#seppicker").on("click", function(){
-    $("#start").val('2019-09-01');
-    $("#end").val('2019-09-30');
-    $("form").submit();
-  })
+
+
+  // $("#seppicker").on("click", function(){
+  //   $("#start").val('2019-09-01');
+  //   $("#end").val('2019-09-30');
+  //   $("form").submit();
+  // })
 
   $("#augustpicker").on("click", function(){
     $("#start").val('2019-08-01');
