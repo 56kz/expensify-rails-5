@@ -12,22 +12,17 @@ class ExpensesController < ApplicationController
     @types = params[:type]
     @click_handling = params[:click_handling]
 
-    # if @click_handling
-    #   # si existe e parametro
-    #   if Typehandler.last == nil
-    #     element = Typehandler.create(name: @click_handling)
-    #     puts "esta vacio el tales , ingreso el primer elemento"
-    #   else
-    #
-    #     if Typehandler.last.name == @click_handling
-    #       puts "aqui desactiva la clase active y los filtros"
-    #       Typehandler.last.delete
-    #     end
-    #     element = Typehandler.create(name: @click_handling)
-    #     puts " ingreso el segundo elemento"
-    #   end
-    #
-    # end
+
+    if @click_handling
+      if Typehandler.last.name == @click_handling
+        element = Typehandler.create(name: "true_no")
+        @click_handling = "true_no"
+        puts "desactiva clase y y desactiva filtros"
+      else
+        element = Typehandler.create(name: @click_handling)
+        puts "activa clase y y activa filtros"
+      end
+    end
 
     range = (@start_date..@end_date)
 

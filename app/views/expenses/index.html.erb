@@ -7,10 +7,12 @@
 
 
         <div class="purchase_filter">
-          <% if @click_handling != "true_pur" %>
+          <% if @click_handling == "true_no" %>
             <%= link_to 'Purchase', expenses_path(:start => @start_date, :end => @end_date, :type => "purchase", :click_handling => "true_pur"), class:"filter_types list-group-item purchase_type" %>
+          <% elsif @click_handling == "true_pur" %>
+            <%= link_to 'Purchase', expenses_path(:start => @start_date, :end => @end_date, :type => "", :click_handling => "true_no"), class:"filter_types list-group-item purchase_type active" %>
           <% else %>
-            <%= link_to 'Purchase', expenses_path(:start => @start_date, :end => @end_date, :type => "purchase", :click_handling => "true_pur"), class:"filter_types list-group-item purchase_type active" %>
+            <%= link_to 'Purchase', expenses_path(:start => @start_date, :end => @end_date, :type => "purchase", :click_handling => "true_pur"), class:"filter_types list-group-item purchase_type" %>
           <% end %>
         </div>
 
