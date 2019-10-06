@@ -17,29 +17,39 @@
         </div>
 
 
+
         <div class="withdrawal_filter">
-          <% if @click_handling != "true_with" %>
-            <%= link_to 'withdrawal', expenses_path(:start => @start_date, :end => @end_date, :type => "withdrawal", :click_handling => "true_with"), class:"filter_types list-group-item withdrawal_type" %>
+          <% if @click_handling == "true_no" %>
+            <%= link_to 'Withdrawal', expenses_path(:start => @start_date, :end => @end_date, :type => "withdrawal", :click_handling => "true_with"), class:"filter_types list-group-item withdrawal_type" %>
+          <% elsif @click_handling == "true_with" %>
+            <%= link_to 'Withdrawal', expenses_path(:start => @start_date, :end => @end_date, :type => "", :click_handling => "true_no"), class:"filter_types list-group-item withdrawal_type active" %>
           <% else %>
-            <%= link_to 'withdrawal', expenses_path(:start => @start_date, :end => @end_date, :type => "withdrawal", :click_handling => "true_with"), class:"filter_types list-group-item withdrawal_type active" %>
+            <%= link_to 'Withdrawal', expenses_path(:start => @start_date, :end => @end_date, :type => "withdrawal", :click_handling => "true_with"), class:"filter_types list-group-item withdrawal_type" %>
           <% end %>
         </div>
 
+
+
         <div class="transfer_filter">
-          <% if @click_handling != "true_trans" %>
-            <%= link_to 'transfer', expenses_path(:start => @start_date, :end => @end_date, :type => "transfer", :click_handling => "true_trans"), class:"filter_types list-group-item transfer_type" %>
+          <% if @click_handling == "true_no" %>
+            <%= link_to 'Transfer', expenses_path(:start => @start_date, :end => @end_date, :type => "transfer", :click_handling => "true_trans"), class:"filter_types list-group-item transfer_type" %>
+          <% elsif @click_handling == "true_trans" %>
+            <%= link_to 'Transfer', expenses_path(:start => @start_date, :end => @end_date, :type => "", :click_handling => "true_no"), class:"filter_types list-group-item transfer_type active" %>
           <% else %>
-            <%= link_to 'transfer', expenses_path(:start => @start_date, :end => @end_date, :type => "transfer", :click_handling => "true_trans"), class:"filter_types list-group-item transfer_type active" %>
+            <%= link_to 'Transfer', expenses_path(:start => @start_date, :end => @end_date, :type => "transfer", :click_handling => "true_trans"), class:"filter_types list-group-item transfer_type" %>
           <% end %>
         </div>
 
         <div class="payment_filter">
-          <% if @click_handling != "true_pay" %>
-            <%= link_to 'payment', expenses_path(:start => @start_date, :end => @end_date, :type => "payment", :click_handling => "true_pay"), class:"filter_types list-group-item payment_type" %>
+          <% if @click_handling == "true_no" %>
+            <%= link_to 'Payment', expenses_path(:start => @start_date, :end => @end_date, :type => "payment", :click_handling => "true_pay"), class:"filter_types list-group-item payment_type" %>
+          <% elsif @click_handling == "true_pay" %>
+            <%= link_to 'Payment', expenses_path(:start => @start_date, :end => @end_date, :type => "", :click_handling => "true_no"), class:"filter_types list-group-item payment_type active" %>
           <% else %>
-            <%= link_to 'payment', expenses_path(:start => @start_date, :end => @end_date, :type => "payment", :click_handling => "true_pay"), class:"filter_types list-group-item payment_type active" %>
+            <%= link_to 'Payment', expenses_path(:start => @start_date, :end => @end_date, :type => "payment", :click_handling => "true_pay"), class:"filter_types list-group-item payment_type" %>
           <% end %>
         </div>
+
 
 
       </div>
@@ -85,10 +95,10 @@
             <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">Filtra por mes <span class="caret"></span></button>
             <ul class="dropdown-menu months">
               <li id="ocpicker">
-                <%= link_to "Octubre 2019", expenses_path(:start => "2019-10-01", :end => "2019-10-31", :type => @types) %>
+                <%= link_to "Octubre 2019", expenses_path(:start => "2019-10-01", :end => "2019-10-31", :type => @types, :click_handling => @click_handling) %>
               </li>
               <li id="seppicker">
-                <%= link_to "Septiembre 2019", expenses_path(:start => "2019-09-01", :end => "2019-09-30", :type => @types) %>
+                <%= link_to "Septiembre 2019", expenses_path(:start => "2019-09-01", :end => "2019-09-30", :type => @types, :click_handling => @click_handling) %>
               </li>
               <li id="augustpicker">
                 <a href="#">Agosto 2019</a>

@@ -17,12 +17,15 @@ class ExpensesController < ApplicationController
       if Typehandler.last.name == @click_handling
         element = Typehandler.create(name: "true_no")
         @click_handling = "true_no"
-        puts "desactiva clase y y desactiva filtros"
+        puts "desactiva clase css y "
       else
-        element = Typehandler.create(name: @click_handling)
-        puts "activa clase y y activa filtros"
+        element = Typehandler.create(name: @click_handling)        
+        puts "activa clase css"
       end
     end
+
+
+
 
     range = (@start_date..@end_date)
 
