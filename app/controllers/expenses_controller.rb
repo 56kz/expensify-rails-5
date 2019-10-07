@@ -46,7 +46,6 @@ class ExpensesController < ApplicationController
     @total_amount = @expenses.sum(:amount)
     @num_transactions = @expenses.count
     @num_transactions == 0 ? @average = 0 : @average = (@total_amount / @num_transactions).round
-
   end
 
 
