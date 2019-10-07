@@ -12,10 +12,12 @@
 #  updated_at :datetime         not null
 #
 
-class Expense < ApplicationRecord
-  self.inheritance_column = nil
-  validates_presence_of :amount, :category, :concept, :date, :type
+require 'rails_helper'
 
-  enum type: [:purchase, :withdrawal, :transfer, :payment]
-  enum category: [:restaurants, :grocery, :car, :services, :home, :education, :fun, :travel, :imprevist]
+RSpec.describe Expense, type: :model do
+  it { should validate_presence_of(:amount) }
+  it { should validate_presence_of(:category) }
+  it { should validate_presence_of(:concept) }
+  it { should validate_presence_of(:date) }
+  it { should validate_presence_of(:type) }
 end
