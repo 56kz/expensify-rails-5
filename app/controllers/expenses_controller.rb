@@ -47,7 +47,6 @@ class ExpensesController < ApplicationController
     @num_transactions = @expenses.count
     @num_transactions == 0 ? @average = 0 : @average = (@total_amount / @num_transactions).round
 
-    json_response(@expenses)
   end
 
 
