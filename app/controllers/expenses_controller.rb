@@ -23,10 +23,8 @@ class ExpensesController < ApplicationController
       if Cathandler.last.name == @cat_handling
          Cathandler.create(name: "true_no")
          @cat_handling = "true_no"
-         puts "desactiva clase css y "
        else
          Cathandler.create(name: @cat_handling)
-         puts "activa clase css"
       end
     end
 

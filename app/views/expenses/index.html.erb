@@ -13,7 +13,6 @@
             <%= link_to 'Purchase', expenses_path(:start => @start_date, :end => @end_date, :type => "purchase", :click_handling => "true_pur", :category => @category, :cat_handling => @cat_handling), class:"filter_types list-group-item purchase_type" %>
           <% end %>
         </div>
-
         <div class="withdrawal_filter">
           <% if @click_handling == "true_no" %>
             <%= link_to 'Withdrawal', expenses_path(:start => @start_date, :end => @end_date, :type => "withdrawal", :click_handling => "true_with", :category => @category, :cat_handling => @cat_handling), class:"filter_types list-group-item withdrawal_type" %>
@@ -23,7 +22,6 @@
             <%= link_to 'Withdrawal', expenses_path(:start => @start_date, :end => @end_date, :type => "withdrawal", :click_handling => "true_with", :category => @category, :cat_handling => @cat_handling), class:"filter_types list-group-item withdrawal_type" %>
           <% end %>
         </div>
-
         <div class="transfer_filter">
           <% if @click_handling == "true_no" %>
             <%= link_to 'Transfer', expenses_path(:start => @start_date, :end => @end_date, :type => "transfer", :click_handling => "true_trans", :category => @category, :cat_handling => @cat_handling), class:"filter_types list-group-item transfer_type" %>
@@ -33,7 +31,6 @@
             <%= link_to 'Transfer', expenses_path(:start => @start_date, :end => @end_date, :type => "transfer", :click_handling => "true_trans", :category => @category, :cat_handling => @cat_handling), class:"filter_types list-group-item transfer_type" %>
           <% end %>
         </div>
-
         <div class="payment_filter">
           <% if @click_handling == "true_no" %>
             <%= link_to 'Payment', expenses_path(:start => @start_date, :end => @end_date, :type => "payment", :click_handling => "true_pay", :category => @category, :cat_handling => @cat_handling), class:"filter_types list-group-item payment_type" %>
@@ -213,114 +210,7 @@
           <%= render @expenses %>
         </tbody>
       </table>
+
     </div>
   </div>
 </div>
-
-
-
-<script>
-  // $('.tipos_filtros').on('click', function(){
-  //   $('.filter_types').removeClass("active");
-  //   $(this).addClass("active");
-  // })
-
-  // $('#purchase_type').on("click", function(){
-  //   $("#start").val('<%= @start_date %>');
-  //   $("#end").val('<%= @end_date %>');
-  //   $('#type').val("purchase");
-  //   $("form").submit();
-  // });
-  //
-  // $('#withdrawal_type').on("click", function(e){
-  //   $("#start").val('<%= @start_date %>');
-  //   $("#end").val('<%= @end_date %>');
-  //   $('#type').val("withdrawal");
-  //   $("form").submit();
-  // });
-  //
-  // $('#payment_type').on("click", function(e){
-  //   $("#start").val('<%= @start_date %>');
-  //   $("#end").val('<%= @end_date %>');
-  //   $('#type').val("payment");
-  //   $("form").submit();
-  // });
-  //
-  // $('#transfer_type').on("click", function(e){
-  //   $("#start").val('<%= @start_date %>');
-  //   $("#end").val('<%= @end_date %>');
-  //   $('#type').val("transfer");
-  //   $("form").submit();
-  // });
-
-
-
-
-
-  // $("#seppicker").on("click", function(){
-  //   $("#start").val('2019-09-01');
-  //   $("#end").val('2019-09-30');
-  //   $("form").submit();
-  // })
-
-  $("#augustpicker").on("click", function(){
-    $("#start").val('2019-08-01');
-    $("#end").val('2019-08-31');
-    $("form").submit();
-  })
-
-  $("#julpicker").on("click", function(){
-    $("#start").val('2019-07-01');
-    $("#end").val('2019-07-30');
-    $("form").submit();
-  })
-
-  $("#junpicker").on("click", function(){
-    $("#start").val('2019-06-01');
-    $("#end").val('2019-06-30');
-    $("form").submit();
-  })
-
-  $("#maypicker").on("click", function(){
-    $("#start").val('2019-05-01');
-    $("#end").val('2019-05-30');
-    $("form").submit();
-  })
-
-  $("#appicker").on("click", function(){
-    $("#start").val('2019-04-01');
-    $("#end").val('2019-04-30');
-    $("form").submit();
-  })
-
-  $("#marpicker").on("click", function(){
-    $("#start").val('2019-03-01');
-    $("#end").val('2019-03-30');
-    $("form").submit();
-  })
-
-  $("#febpicker").on("click", function(){
-    $("#start").val('2019-02-01');
-    $("#end").val('2019-02-28');
-    $("form").submit();
-  })
-
-  $("#janpicker").on("click", function(){
-    $("#start").val('2019-01-01');
-    $("#end").val('2019-01-30');
-    $("form").submit();
-  })
-
-  $("#dicpicker").on("click", function(){
-    $("#start").val('2018-12-01');
-    $("#end").val('2018-12-30');
-    $("form").submit();
-  })
-
-  $("#novpicker").on("click", function(){
-    $("#start").val('2018-11-01');
-    $("#end").val('2018-11-30');
-    $("form").submit();
-  })
-
-</script>
