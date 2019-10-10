@@ -54,8 +54,7 @@ RSpec.describe 'Expenses', type: :request do
 
 
      it "respond with html" do
-       expect(Expense, :count).by(1)
-       # expect(flash[:notice]).to eq 'Product was successfully created.'       
+       expect(response.content_type).to eq "text/javascript"
      end
 
      # ActionController::UnknownFormat:
