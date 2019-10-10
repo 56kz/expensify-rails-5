@@ -1,6 +1,7 @@
 <% if @expense.errors.empty? %>
   $('#expense_modal').modal('hide');
   $('#expenses-table').prepend('<%= j render "row", expense: @expense %>')
+  $('.flash').html('<div class="alert alert-info">¡El Gasto fue creado con éxito!</div>')
 <% else %>
   alert('<%= @expense.errors.full_messages[0] %>');
 <% end %>

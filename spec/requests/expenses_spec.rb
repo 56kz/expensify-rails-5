@@ -4,7 +4,6 @@ RSpec.describe 'Expenses', type: :request do
   # initialize test data
   let!(:expenses) { create_list(:expense, 10) }
 
-  #
   # describe 'GET /expenses' do
   #   # make HTTP get request before each example
   #   before { get '/expenses' }
@@ -19,60 +18,33 @@ RSpec.describe 'Expenses', type: :request do
   # end
 
 
-
-
-
-
   describe 'POST /expenses' do
-    context "with valid atr" do
+    # context "with valid atr" do
+    #
+    #  before { post '/expenses', params: { :expense => { :concept => "An awesome product", :date => "08-10-2019", :amount => 56, :type => "purchase", :category => "fun"  } }, xhr: true }
+    #
+    #  it "When the request is valid" do
+    #    expect(response.content_type).to eq "text/javascript"
+    #    expect(flash[:notice]).to eq "¡El Gasto fue creado con éxito!"
+    #  end
+    #
+    #  it 'returns status code 200' do
+    #    expect(response).to have_http_status(200)
+    #  end
+    # end
 
+    context 'when the request is invalid' do
+     before { post '/expenses', params: { :expense => { :concept => "Call me on my cellphone" } }, xhr: true }
 
-
-      # it "rsspondos html" do
-      #   post :create, { :expense => { :concept => "An awesome product", :date => "08-10-2019", :amount => 56, :type => "purchase", :category => "fun" } }
-      #   expect(response.content_type).to eq "text/html"
-      # end
-      #URL incorrecta
-
-
-      # it 'create a new product' do
-      #   params = {
-      #    concept: 'An awesome product',
-      #    amount: 50,
-      #    date: "08-10-2019",
-      #    category: "fun",
-      #    type: "purchase"
-      #   }
-      #   expect { post(params: { expense: params }) }.to change(Expense, :count).by(1)
-      #   # expect(flash[:notice]).to eq 'Product was successfully created.'
-      # end
-      #URL incorrecta
-
-
-
-     before { post '/expenses', params: { :expense => { :concept => "An awesome product", :date => "08-10-2019", :amount => 56, :type => "purchase", :category => "fun"  } }, xhr: true }
-
-
-     it "respond with html" do
-       expect(response.content_type).to eq "text/javascript"
+     it 'returns status code 200' do
+       expect(response).to have_http_status(200)
      end
 
-     # ActionController::UnknownFormat:
-     #   ExpensesController#create is missing a template for this request format and variant.
-     #
-     #   request.formats: ["text/html"]
-     #   request.variant: []
-
-
-
-
-
+     # it 'returns a validation failure message' do
+     #   expect(alert).to eq "Amount can't be blank"
+     # end
     end
   end
-
-
-
-
 
 
 
@@ -109,15 +81,6 @@ RSpec.describe 'Expenses', type: :request do
   # end
 
 
-
-
-
-
-  # describe 'POST /expenses' do
-  #   it "responds to html" do
-  #     post '/expenses', { :expense =>  { :concept => "wua", :amount => 34, :date => "08-10-2019", :type => "purchase", :category => "fun" } }
-  #   end
-  # end
 
   #
   # # Test suite for PUT /todos/:id

@@ -63,7 +63,7 @@ class ExpensesController < ApplicationController
   def update
     expense = Expense.find(params[:id])
     if expense.update(expense_params)
-      redirect_to expenses_path, notice: "Tú gasto fue actualizado con éxito"
+      redirect_to expenses_path, notice: "¡El Gasto fue actualizado con éxito!"
     else
       render :edit
     end
