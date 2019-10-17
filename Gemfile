@@ -41,6 +41,7 @@ group :development, :test do
   gem "sqlite3", "~> 1.3.6"
   gem 'rspec-rails', '~> 3.5'
   gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :test do
@@ -48,7 +49,7 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'faker'
   gem 'database_cleaner'
-  gem 'rails-controller-testing'  
+  gem 'rails-controller-testing'
 end
 
 group :development do
