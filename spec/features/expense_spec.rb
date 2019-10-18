@@ -3,14 +3,15 @@ require 'rails_helper'
 describe "Expense" , type: :feature do
   it "crea un gasto y luego lo envia a expenses path" do
     driver = Selenium::WebDriver.for:chrome
-    driver.manage.timeouts.implicit_wait = 300
     driver.get "http://localhost:3000/expenses"
     driver.find_element(:id, 'new_expense_button').click
+    sleep 3
+    driver.find_element(:id, 'date-field').send_keys("18-10-2019")
+    driver.find_element(:id, 'concept-field').send_keys("Prueba con capybara")
+    driver.find_element(:id, 'amount-field').send_keys(100)
     driver.find_element(:id, 'new_expense_submit').click
-
-    # wait = driver(:timeout => 10)
-    # wait.until { driver.find_element(:id, 'new_expense_button').click }
-
-    # Aqui vamos a tratar de colocar un timeout para dejar que aparezva el modal y llenarlo
+    sleep 3
+    # expect(page).to have_content('Prueba con capybara')
+    # page.should have_content('Prueba con capybara')
   end
 end
