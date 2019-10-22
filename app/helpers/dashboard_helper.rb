@@ -18,12 +18,12 @@ module DashboardHelper
   end
 
   def  actually_month_amount
-    array = Expense.where("cast(strftime('%m', date) as int) = ?", Time.zone.now.strftime('%m').to_i )
+    array = Expense.where(date: '2019-10-01'..'2019-10-31')
     iterate(array)
   end
 
   def last_month_amount
-    array = Expense.where("cast(strftime('%m', date) as int) = ?", (Time.zone.now.strftime('%m').to_i - 1))
+    array = Expense.where(date: '2019-09-01'..'2019-09-30')   
     iterate(array)
   end
 
